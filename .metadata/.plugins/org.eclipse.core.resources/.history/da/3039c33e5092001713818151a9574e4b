@@ -1,0 +1,6 @@
+package phuongnq.cvonline.controller;
+
+@Controller
+public class HomeController {
+
+}

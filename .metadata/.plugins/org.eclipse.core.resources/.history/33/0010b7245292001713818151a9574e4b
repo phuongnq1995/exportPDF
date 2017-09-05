@@ -1,0 +1,22 @@
+package phuongnq.cvonline.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HomeController {
+	
+	public ModelAndView homePage(Model model){
+		ModelAndView mav = new ModelAndView("home");
+		return mav;
+	}
+	
+	public void exportPDF(HttpServletRequest request, HttpServletResponse response){
+		
+	}
+	
+}
