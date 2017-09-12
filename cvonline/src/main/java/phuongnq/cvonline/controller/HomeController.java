@@ -27,6 +27,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 
+import phuongnq.cvonline.util.CommonUtil;
+
 @Controller
 public class HomeController {
 	
@@ -49,7 +51,7 @@ public class HomeController {
 	    try
 	    {
 	      // create a url object
-	      URL url = new URL("http://localhost:8080/cvonline");
+	      URL url = new URL(CommonUtil.Config.domain + "/cvonline");
 
 	      // create a urlconnection object
 	      URLConnection urlConnection = url.openConnection();
@@ -71,7 +73,7 @@ public class HomeController {
 	      e.printStackTrace();
 	    }
 	    String uploadPath = context.getRealPath("") + File.separator;
-	    System.out.println("uploadPath:"+uploadPath);
+
 	    File filePDF = new File(uploadPath+"HTMLtoPDF.pdf");
 	    System.out.println(filePDF.getAbsolutePath());
 		try {
@@ -114,10 +116,10 @@ public class HomeController {
 	    	out.write(byteArrayOutputStream.toByteArray());
 	        out.flush();
 	        out.close();
+	        filePDF.delete();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-
 	}
 
 }

@@ -1,0 +1,16 @@
+package phuongnq.cvonline.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/cv")
+public class CvController {
+
+	@RequestMapping("/create")
+	public String create(Model model){
+		
+		return "/cv/create";
+	}
+}
