@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;abc.properties&apos; to &apos;zzz&apos;" description="Move &apos;abc.properties&apos; to &apos;zzz&apos;" destination="src/main/resources/zzz" element1="src/main/resources/abc.properties" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1508771538593" updateReferences="true"/>
+</session>

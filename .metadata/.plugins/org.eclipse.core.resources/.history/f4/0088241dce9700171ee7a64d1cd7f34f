@@ -1,7 +1,0 @@
-package phuongnq.cvonline.util;
-
-public class CommonUtil {
-	public interface Config{
-		final static String domain = "localhost:8080"; 
-	}
-}

@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +38,33 @@ public class HomeController {
 	@Autowired
 	ServletContext context; 
 	
+	@Autowired
+	ResourceLoader resourceLoader;
+	
 	@RequestMapping(value="/")
-	public ModelAndView homePage(Model model) {
+	public ModelAndView homePage(Model model) throws IOException {
 		ModelAndView mav = new ModelAndView("home");
+		final Resource fileResource = resourceLoader.getResource("classpath:zzz/abc.properties");
+		
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileResource.getInputStream()));
+
+		String line;
+
+		// read from the urlconnection via the bufferedreader
+      	try {
+      		while ((line = bufferedReader.readLine()) != null)
+      		{
+      			String values[] = line.split("=");
+      			System.out.println(values[1] + "/n");
+      		}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    try {
+			bufferedReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 
